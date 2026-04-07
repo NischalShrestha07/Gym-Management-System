@@ -35,7 +35,6 @@ class DataTrainerController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images/trainers', 'public');
         }
-
         // Create a new trainer
         $trainer = new DataTrainer();
         $trainer->name = $request->input('name');

@@ -79,6 +79,7 @@ class TrainerController extends Controller
             $trainer->photo = $photoPath;
         } // If no new photo is uploaded, $trainer->photo retains its existing value
 
+
         // Update the trainer details
         $trainer->name = $request->input('name');
         $trainer->facebook = $request->input('facebook');

@@ -14,79 +14,47 @@
         border-radius: 5px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
-
-    .custom-close {
-        font-size: 2rem;
-        /* Increase size */
-        color: white;
-        /* Set color to white */
-        opacity: 1;
-        /* Ensure full opacity */
-        outline: none;
-    }
-
-    .custom-close:hover {
-        color: #f0f0f0;
-        /* Slight change on hover for a subtle effect */
-    }
-
-    .custom-alert {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 1050;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-        border-radius: 5px;
-        padding: 20px;
-        max-width: 300px;
-        opacity: 1;
-        transform: translateX(100%);
-        transition: all 0.5s ease-out;
-    }
-
-    .custom-alert.fade-in {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    .custom-alert.fade-out {
-        opacity: 0;
-        transform: translateX(100%);
-        transition: all 0.5s ease-in;
-    }
-
-    .alert strong {
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-
-    .close {
-        font-size: 1.2rem;
-    }
 </style>
 <!-- Success and Error Alert Messages -->
-
-
-<section class="slider_section position-relative">
-    <div>
-        @if (session('success'))
-        <div class="alert alert-success text-white bg-success alert-dismissible custom-alert fade-in" role="alert">
-            <strong>Success!</strong> {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
-
-        @if (session('error'))
-        <div class="alert alert-danger text-white bg-danger alert-dismissible custom-alert fade-in" role="alert">
-            <strong>Success!</strong> {{ session('error') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
+{{-- <div>
+    @if (session('success'))
+    <div class="alert alert-success text-white bg-success alert-dismissible custom-alert fade-in" role="alert">
+        <strong>Success!</strong> {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+    @endif
+
+    @if (session('error'))
+    <div class="alert alert-danger text-white bg-danger alert-dismissible custom-alert fade-in" role="alert">
+        <strong>Error!</strong> {{ session('error') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+</div> --}}
+<div>
+    @if (session('success'))
+    <div class="alert alert-success text-white bg-success alert-dismissible custom-alert" role="alert">
+        <strong>Success!</strong> {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
+    @if (session('error'))
+    <div class="alert alert-danger text-white bg-danger alert-dismissible custom-alert" role="alert">
+        <strong>Error!</strong> {{ session('error') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+</div>
+<section class="slider_section position-relative">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @foreach ($man as $item)
@@ -103,9 +71,10 @@
                                     {{ $description }}
                                 </p>
                                 <div class="">
-                                    <a href="{{ asset('/contact') }}">
-                                        Contact Us
-                                    </a>
+                                    {{-- <a href="{{ asset('/contact') }}"> --}}
+                                        <a href="{{ asset('/contact') }}">
+                                            Contact Us
+                                        </a>
                                 </div>
                             </div>
                         </div>
@@ -136,11 +105,18 @@
             </div>
 
         </div>
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
 
     </div>
-
 </section>
-
+{{--
+<!-- end slider section --> --}}
 </div>
 
 
@@ -161,13 +137,16 @@
                     <div class="box">
                         <div class="img-box">
                             <img src="{{ asset('storage/' . $item->img) }}" alt="">
+                            {{-- <img src="{{ asset($item->img) }}" alt=""> --}}
 
                         </div>
                         <div class="detail-box">
                             <h5>
+                                {{-- QUALITY EQUIPMENT --}}
                                 {{ $item->title }}
                             </h5>
                             <p>
+                                {{-- ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor --}}
                                 {{ $item->description }}
                             </p>
                         </div>
@@ -189,22 +168,32 @@
     <div class="container">
 
         <div class="row">
+            @foreach ($whyuss as $item)
             <div class="col-md-12 mx-auto">
                 <div class="detail-box">
                     <h2>
+                        {{-- HEALTHY MIND, HEALTHY BODY --}}
                         {{ $item->head }}
                     </h2>
                     <p>
                         {{ $item->headdetail }}
 
                     </p>
-
+                    <div class="btn-box">
+                        <a href="">
+                            READ MORE
+                        </a>
+                    </div>
                 </div>
             </div>
+            @endforeach
         </div>
 
     </div>
 </section>
+
+<!-- end heathy section -->
+
 <!-- trainer section -->
 
 <section class="trainer_section layout_padding">
@@ -227,13 +216,13 @@
                         <img src="{{ asset('storage/' . $item->photo) }}" alt="">
                     </div>
                     <div class="social_box">
-                        <a href="{{ $item->facebook }}" target="_blank">
+                        <a href="{{ $item->facebook }}">
                             <img src="{{ asset('frontend/images/facebook-logo.png') }} " alt="">
                         </a>
-                        <a href="{{ $item->twitter }}" target="_blank">
+                        <a href="{{ $item->twitter }}">
                             <img src="{{ asset('frontend/images/twitter.png') }}  " alt="">
                         </a>
-                        <a href="{{ $item->instagram }}" target="_blank">
+                        <a href="{{ $item->instagram }}">
                             <img src="{{ asset('frontend/images/instagram-logo.png') }}  " alt="">
                         </a>
                     </div>
@@ -254,7 +243,13 @@
         <div class="row">
             <div class="col-md-6 px-0">
                 <div class="img-box">
+
+
+
                     <img src="{{ asset($contactimage) }}" width="100px" alt="contact image">
+
+
+
                 </div>
             </div>
             <div class="col-lg-5 col-md-6">
@@ -322,25 +317,6 @@
                     setTimeout(() => alert.remove(), 500); // Remove element after fade-out
                 }
             }, 5000); // Adjust time (5000ms = 5 seconds)
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-        // Fade in the alert on page load
-        let alertBox = document.querySelectorAll('.custom-alert');
-
-        // Automatically fade out after 5 seconds
-        setTimeout(function() {
-        alertBox.forEach(function(alert) {
-        alert.classList.add('fade-out');
-        });
-        }, 5000); // 5 seconds
-
-        // Remove the alert from the DOM after the fade-out transition completes
-        setTimeout(function() {
-        alertBox.forEach(function(alert) {
-        alert.remove();
-        });
-        }, 5500); // 5 seconds + 0.5s for fade-out effect
         });
 </script>
 

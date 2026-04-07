@@ -94,10 +94,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
-        <div class="preloader flex-column justify-content-center align-items-center">
+        {{-- <div class="preloader flex-column justify-content-center align-items-center">
             <img style="border-radius: 100px;" class="animation__shake" src="{{asset('admincss/dist/img/royal2.webp')}}"
                 alt="Gym Logo" height="150" width="150">
-        </div>
+        </div> --}}
 
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 
